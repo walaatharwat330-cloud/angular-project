@@ -1,0 +1,123 @@
+<!--<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{productProp.productImgURL}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{productProp.productName}}</h5>
+    <p class="card-text">{{productProp.productDetails}}</p>
+    <a href="#" class="btn btn-primary">{{productProp.productPrice}}</a>
+  </div>
+</div>-->
+
+<div class="container">
+  <!--day3  
+       SEARCH
+  two binding banana in a box [(ngModel)]="propname--->
+ <!--- <input class="form- control" [(ngModel)] ="filterProduct">-->
+  
+<p>{{date |date:'medium'}}</p>
+  
+<div class=" row">
+    @for(items of productAfterSearch();track items.id){
+<div class="col-4">
+
+
+  <!--1-->
+  <!--property binding [class.classname]="cond"-->
+<!--<div class="card"  style="width: 18rem;" 
+[class-test] = "items.productQuantity ==1">-->
+
+<!--2-->
+  <!--attribute directive [ngClass]="{'classname':cond}" ,ngStyle ودي اما تبقي عندي كذا كونديشن علي اكتر من كلاس وكمان لازماعمل امبورت للcommonmoduleعشان بستخدم -->
+  <!--step2-->
+  <div class="card"  style="width: 18rem;" [routerLink]="['/product-parent/',items.id]"
+   [ngClass] = "{'class-test':items.productQuantity == 1,
+   'test':items.productQuantity >1}">
+
+   <!--3-->
+   <!--property binding [style.prop]="cond?''?''"-->
+  <!--<div class="card"  style="width: 18rem;"
+[style.background-color]="items.productQuantity ==1?'red':'green'">-->
+
+<!--4-->
+<!--attribute directives,[ngStyle]="{'prop':cond?'':''}"-->
+ <!---<div class="card" style="width: 18rem;"
+  [ngStyle]="{'background-color': (items.productQuantity == 1) ? 'yellow' : 'beige'}">-->
+
+
+  <img appImgstyle class="card-img-top" src="{{items.productImgURL}}" alt="Card image cap">
+  <div class="card-body">
+    <!--class-->
+    <h5 class="card-title" [class.text-danger]="items.productQuantity == 0">{{items.productName}}</h5>
+    <p class="card-text">{{items.productDetails}}</p>
+    <a href="#" class="btn btn-primary">{{items.productPrice |currency:'EGP'}}</a>
+  
+    <!--<button href="btn-btn-sec" [disabled]="items.productQuantity==0">add to cart</button>-->
+<div class="d-flex justify-content-between">
+  <p class="card-text"> qty:{{items.productQuantity}}</p>
+
+
+  @switch (items.productQuantity) {
+    @case (0) {
+      <p class="text-danger">out of stock!</p>
+    }
+    @case (1) {
+      <p class="text-warning">last item!</p>
+           <!-- <button class="text-success">add to cart</button>-->
+      <button 
+        class="btn btn-success"
+       (click)="decreaseQuantity(items)"
+      
+      (click)="AddToCartInChild(items)">
+        Add to cart
+      </button>
+
+    }
+    @case(2){
+      <p class="text- last">last two items!</p>
+           <!--- <button class="text-success">add to cart</button>-->
+           <button 
+        class="btn btn-success"
+        (click)="decreaseQuantity(items)"
+        (click)="AddToCartInChild(items)"
+      >
+        Add to cart
+      </button>
+
+    }
+    @default {
+      <!--<button class="text-success">add to cart</button>-->
+      <button 
+        class="btn btn-success"
+        (click)="decreaseQuantity(items)"
+        (click)="AddToCartInChild(items)"
+      >
+        Add to cart
+      </button>
+    }
+  }
+</div>
+<!--@if (items.productQuantity == 0){
+      <p>out of stock</p>
+    }@else if (items.productQuantity==1) {
+      <p>last one!</p>
+          <button href="btn-btn-one">add to cart</button>
+
+    }@else if (items.productQuantity==2) {
+      <p>last two!</p>
+           <button href="btn-btn-two">add to cart</button>
+
+    }@else {
+      <p>in stock</p>
+                 <button href="btn-btn-three">add to cart</button>
+
+  }-->
+
+  
+    </div>
+</div>
+</div>
+    }
+    
+</div>
+</div>
+    <p>{{ '1234567812345678' | creditCard }}</p>
+    

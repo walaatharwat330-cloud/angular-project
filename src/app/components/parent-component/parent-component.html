@@ -1,0 +1,45 @@
+<p>parent-component works!</p>
+<!--Search-->
+<div>
+
+ <input class="form- control" [(ngModel)]="searchInParent">
+
+ </div>
+
+
+<!--prd list--
+fire child event==>{}-->
+
+<app-products (prdEvent)="AddToCartInParent($event)" [filterProduct]="searchInParent"></app-products>
+
+
+<table class="table table-dark table-borderless container">
+
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Price</th>
+      <th scope="col">Product Quantity</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(items of prdList ; track items.id){
+    <tr>
+      <td>{{items.productName}}</td>
+      <td>{{items.totalPrice}}</td>
+      <td>{{items.productQuantity}}</td>
+      <td>
+        <!-- <button class = "btn btn-danger"
+         (click)="removeItem(items.id)"
+         >Remove</button> -->
+         <button 
+  class="btn btn-danger"
+  (click)="decreaseItem(items.id)">
+  {{ items.productQuantity > 1 ? 'Decrease' : 'Remove' }}
+</button>
+      </td>
+    </tr>
+}
+  </tbody>
+</table>

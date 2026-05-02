@@ -1,0 +1,25 @@
+<!--Data binding -->
+<!--one way binding -->
+<!--a) interpolation-->
+<!--بنحط البروبيرتي اللي شايه الاسم-->
+
+<h1>{{propStore.storeName}}</h1>
+<img src="{{propStore.storeLogo}}">
+<!--<ul>
+    <li>{{propStore.storeBranch[0]}}</li>
+    <li>{{propStore.storeBranch[1]}}</li>
+</ul>-->
+
+<ul>
+@for(item of propStore.storeBranch;track propStore.storeBranch){
+    <li>{{item}}</li>
+}
+
+</ul>
+
+<button class="btn btn-success" (click)="login()" [disabled]="isUserLogged">login</button>
+<button class="btn btn-danger" (click)="logout()" [disabled]="!isUserLogged">logout</button>
+
+
+<!-- <app-products></app-products> -->
+ <app-signals></app-signals>

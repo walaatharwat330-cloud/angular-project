@@ -1,0 +1,100 @@
+<!-- <p>template-driven-signup works!</p>-->
+
+
+ <!--<button (click)="AddNewUser()">add new user</button> -->
+
+<div class="container">
+  <!-- <p> valid:{{FnameInput.valid}}</p>
+  <p> invalid:{{FnameInput.invalid}}</p>
+
+   <p> dirty:{{FnameInput.dirty}}</p>
+  <p> pristine:{{FnameInput.pristine}}</p>
+
+ <p> touched:{{FnameInput.touched}}</p>
+  <p> untouched:{{FnameInput.untouched}}</p> -->
+
+  <!-- templete reference #anyName -->
+  <form (ngSubmit)="AddNewUser()"  #MyForm="ngForm">
+    <!-- Name Input -->
+    <div class="mb-3">
+      <label for="name" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Enter your last name"
+        required
+        minlength="3"
+      [(ngModel)]="userProp.fname"
+        name="fname"
+        #FnameInput="ngModel"
+        [ngClass]="{'is-invalid':(FnameInput.dirty || FnameInput.touched) && FnameInput.invalid,
+            'is-valid':FnameInput.valid
+        }"
+  
+      />
+
+       <div class="invalid-feedback">
+        @if (FnameInput.errors?.['required']) {
+          <p>fname is required</p>
+        } @else if (FnameInput.errors?.['minlength']) {
+          <p>fname at least 3 chars</p>
+        }
+      </div> 
+    </div>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Enter your last name"
+        required
+        minlength="3"
+[(ngModel)]="userProp.lname"
+        name="lname"
+
+         #LnameInput="ngModel"
+        [ngClass]="{
+          'is-valid': LnameInput.valid,
+          'is-invalid': (LnameInput.dirty || LnameInput.touched) && LnameInput.invalid,
+        }"
+  
+      />
+    </div>
+    <!-- Email Input -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        required
+           [(ngModel)]="userProp.email"
+
+        name="email"
+      />
+    </div>
+
+    <!-- Password Input -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter your password"
+        required
+   [(ngModel)]="userProp.password"
+   
+        name="password"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success w-100" [disabled]="MyForm.invalid">Submit</button>
+  </form>
+</div>
+

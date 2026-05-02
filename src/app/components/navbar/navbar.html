@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">MyApp</div>
+
+    <nav class="nav">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/product-parent" routerLinkActive="active">Products</a>
+      <a routerLink="/signup" routerLinkActive="active">Sign up</a>
+      <a class="nav-link" [hidden]="isUserLogged()">login</a>
+       <a class="nav-link" [hidden]="!isUserLogged()">logout</a>
+
+    </nav>
+
+    <!--<button class="btn">Login</button>-->
+  </div>
+</header>
